@@ -1,14 +1,13 @@
 from django.db import models
 
 
-# Modelo para la tabla "Formulario"
 class Formulario(models.Model):
-    nombre = models.CharField(max_length=30)  
-    descripcion = models.CharField(max_length=40)  
-    fecha_creacion = models.DateField()  
-
+    Nombre = models.CharField(max_length=30)
+    Descripcion = models.CharField(max_length=40)
+    Fecha_Creacion = models.DateField(auto_now_add=True)  # Asignar la fecha actual automáticamente
+     
     def __str__(self):
-        return self.nombre
+        return self.Nombre
 
 # Modelo para la tabla "INFO_FORM"
 class InfoForm(models.Model):

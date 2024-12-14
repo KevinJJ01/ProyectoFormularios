@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Registro</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'Forms/css/styles.css' %}">
+    
+</head>
+
+<body>
+
+    {% block sidebar %}
+    <nav class="nav">
+        <h1>FORMULARIOS DEV</h1>
+    </nav>
+    {% endblock %}
+
+    <main class="main-content-form">
+
+        <aside class="content-info-form">
+
+            <div class="card-info-form">
+                <form class="form-inf" action="" method="POST">
+                    <label class="title-form-inf">Seleccion Unica</label>
+                    <input class="title-option" type="text" id="" name="" placeholder="Titulo de pregunta">
+                    <div id="options-container-1">
+                        <div><input class="checkbox" type="checkbox"><input class="option" type="text" id="" name="" placeholder="Titulo opcion"></div>
+                    </div>
+                    <button type="button" class="button" onclick="agregarOpcion(1)">Agregar Opcion</button>
+                    <button class="button-1">Agregar Componente</button>
+                </form>
+            </div>
+            <div class="card-info-form">
+                <form class="form-inf" action="" method="POST">
+                    <label class="title-form-inf">Lista Desplegable</label>
+                    <input class="title-option" type="text" id="" name="" placeholder="Titulo de pregunta">
+                    <ul id="options-container-2">
+                        <li><input class="option" type="text" id="" name="" placeholder="Titulo opcion"></li>
+                    </ul>
+                    <button type="button" class="button" onclick="agregarOpcion(2)">Agregar Opcion</button>
+                    <button class="button-1">Agregar Componente</button>
+                </form>
+            </div>
+
+
+            <div class="card-info-form">
+                <form class="form-inf" action="" method="POST">
+                    <label class="title-form-inf">Campo de Texto</label>
+                    <input class="title-option" type="text" id="" name="" placeholder="Titulo de pregunta">
+                    <input class="input-text" type="text" id="" name="" placeholder="Texto">
+                    <button class="button-1">Agregar Componente</button>
+                </form>
+            </div>
+
+            <script src="{% static 'Forms/js/index.js' %}"></script>
+            
+        </aside>
+
+
+        <section class="formulario-style">
+            <div class="card-form">
+                <img class="img-form" src="{% static 'Forms/img/form.png' %}" alt="imagen de formulario">
+                <form method="POST">
+                    {% csrf_token %}
+                    <input class="input-1" type="text" id="Nombre" name="Nombre" placeholder="Titulo">
+                    <br>
+                    <input class="input-2" type="text" id="Descripcion" name="Descripcion" placeholder="Descripcion">
+                    <br>
+                 
+            </div>
+            
+                <button class="a-back-1" type="submit">Guardar</button>
+            </form>
+            
+
+            <div>
+                <!-- contenido a guardar -->
+                <h3>Hola mundo</h3>
+            </div>
+
+            <div>
+                <a href="{% url 'consultarForm'%}"><button class="a-back">Atras</button></a>
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <footer class="footer">
+        <p>FOOTER</p>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/c628e42b8b.js" crossorigin="anonymous"></script>
+    
+
+</body>
+
+</html>

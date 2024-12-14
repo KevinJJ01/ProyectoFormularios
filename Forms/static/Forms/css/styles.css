@@ -1,0 +1,452 @@
+:root{
+  --font-body: white;
+  --primary-color: #AFC2CC;
+}
+
+*{
+  margin: 0;
+}
+
+body{
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: var(--font-body);
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 80px 1fr 50px;
+  min-height: 100vh;
+}
+
+
+/* BARRA DE NAVEGACION  */
+.nav{
+  background-color: var(--primary-color);
+  height: 78px;
+  border: 1px solid rgb(184, 184, 184);
+}
+
+.nav h1{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 8px;
+  text-align: center;
+  color: var(--font-body);
+  font-size: 40px;
+}
+
+/* CONTENEDOR MAIN */
+.main-content{
+  width: 100vw;
+  height: auto;
+  box-sizing: border-box;
+  padding: 50px;
+
+}
+
+.main-content-form{
+  width: 100vw;
+  height: auto;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 500px 1fr;
+  grid-template-rows: 1fr;
+  justify-items: center;
+}
+
+
+
+/*CONTENEDOR DE CARDS INFO-FORM*/
+.content-info-form{
+  height: 100%;
+  width: 100%;
+  background-color: #91A0A8;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr ;
+  align-items: center;
+  justify-items: center;
+  overflow: auto;
+}
+.card-info-form{
+  background-color: #AFC2CC;
+  border-radius: 15px;
+  height: 80%;
+  width: 80%;
+}
+
+.form-inf{
+box-sizing: border-box;
+padding: 20px;
+height: 100%;
+width: 100%;
+display: grid;
+grid-template-rows: 24px 24px 1fr 30px;
+grid-template-areas: "title-inf" "title-inf"
+                     "title" "title"
+                     "option" "option"
+                     "butonc" " butonc-1";
+overflow-y: auto;
+align-items: stretch;
+align-content: center;
+gap: 5px;
+
+}
+
+.title-form-inf{
+grid-area: "title-inf";
+text-align: center;
+font-size: 20px;
+font-weight: 600;
+color: var(--font-body);
+}
+
+.title-option{
+grid-area: "title";
+padding: 6px;
+border-radius: 10px;
+border: none;
+}
+
+.option{
+box-sizing: border-box;
+grid-area: "option";
+padding: 4px;
+margin: 2px;
+border-radius: 5px;
+border: none ;
+background-color: var(--primary-color);
+}
+
+.checkbox {
+  -webkit-appearance: none; /* Quita el estilo predeterminado del checkbox */
+  -moz-appearance: none;
+  appearance: none;
+  width: 15px; /* Ancho del círculo */
+  height: 15px; /* Alto del círculo */
+  border-radius: 50%; /* Hace el checkbox circular */
+  border: 2px solid #000; /* Color y grosor del borde */
+  outline: none;
+  position: relative;
+  cursor: pointer;
+  padding-top: 6px;
+}
+
+.checkbox:checked {
+  background-color: #007bff; /* Color de fondo cuando está seleccionado */
+  border-color: #ffffff; /* Color del borde cuando está seleccionado */
+}
+
+
+.button{
+grid-area: "butonc";
+height: 30px;
+width: 40%;
+justify-self: right;
+background-color: #d9f7ff;
+padding: 2px;
+border-radius: 10px;
+border: none;
+}
+
+.button-1{
+grid-area: "butonc-1";
+height: 30px;
+width: 40%;
+justify-self: right;
+background-color: rgb(205, 255, 205);
+padding: 2px;
+border-radius: 10px;
+border: none;
+}
+
+.input-text{
+text-align: center;
+border-radius: 10px;
+border: none;
+}
+
+
+/*CONTENEDOR FORM*/
+.formulario-style{
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 210px 50px 1fr 60px ;
+  text-align: center;
+  padding: 2px;
+  overflow: auto;
+}
+
+
+
+/* CARDS */
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  gap: 40px;
+  justify-items: center;
+}
+
+.card {
+  position: relative; 
+  box-sizing: border-box;
+  padding: 10px;
+  background-color: var(--primary-color);
+  display: grid;
+  grid-template-columns: 120px 1fr 10px;
+  width: 400px;
+  border-radius: 15px;
+}
+
+.img-cont{
+  padding: 5px;
+  margin: 5px;
+}
+
+.card .img {
+  width: 100px;
+  height: 100px;
+  border-radius: 15px;
+  object-fit: cover;
+  position: relative;
+  z-index: 1; 
+}
+
+.card .icon {
+  position: absolute; 
+  top: 50px; 
+  left: 50px; 
+  width: 40px;  
+  height: 40px; 
+  background-color: rgba(255, 255, 255, 0.5); 
+  border-radius: 50%; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgba(255, 255, 255, 0);
+  font-size: 20px; 
+  z-index: 2 ;
+  transition:  linear 0.5s;
+}
+
+.icon:hover{
+  background-color: var(--primary-color); 
+  color: var(--font-body);
+}
+
+
+.card .text{
+  padding: 5px;
+  margin: 5px;
+  padding-top: 10px;
+  display: inline;
+  justify-items: start;
+  color:var(--font-body)
+}
+
+.text .t-1{
+  font-size: 40px;
+}
+
+.text .t-2{
+  font-size: 20px;
+}
+
+/* Estilo básico para el ícono */
+.icon-options {
+  color: var(--font-body);
+  font-size: 25px;
+  cursor: pointer;
+}
+
+/* Estilo para el menú de opciones, oculto por defecto */
+.options-menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 120px;
+  height: auto;
+  display: none;
+  position: absolute;
+  background-color: var(--primary-color);
+  border: 1px solid #888888;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  z-index: 1000;
+  color:var(--font-body);
+  font-size: 20px;
+}
+
+.options-menu li {
+  padding: 10px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.options-menu li:hover {
+  background-color: #f0f0f0;
+  border-radius: 15px;
+  color:black
+}
+.links{
+  text-decoration: none;
+  color: var(--font-body);
+}
+
+/*BOTON DE ADD*/
+
+.icon-add {
+  position: fixed; 
+  bottom: 70px; 
+  right: 4cqb;  
+  width: 70px;  
+  height: 70px; 
+  background-color: #979797;
+  color: white; 
+  border-radius: 50%; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+  cursor: pointer; 
+  text-decoration: none;
+  transition: linear 1s;
+}
+
+.icon-add:hover{
+  background-color: green;
+}
+
+/*Estilo formularios registrar y modificar*/
+/*Titulo y boton*/
+.title-main{
+box-sizing: border-box;
+height: 50px;
+display: grid;
+grid-template-columns: 50px 1fr;
+text-align: center;
+justify-items: center;
+
+}
+
+.a-back{
+  position: fixed;
+  position: fixed; 
+  bottom: 70px; 
+  right: 4cqb;  
+  box-sizing: border-box;
+  padding: 6px;
+  margin: 8px 0px;
+  text-decoration: none;
+  color: black;
+  font-size: 15px;
+  background-color: var(--primary-color);
+  font-weight: 700;
+  border: 0;
+  height: 40px;
+  width: 100px;
+  border-radius: 15px;
+  transition: linear 0.5s;
+}
+
+.a-back:hover{
+  background-color: green;
+  color: var(--font-body);
+}
+
+.a-back-1{
+  position: fixed;
+  position: fixed; 
+  bottom: 120px; 
+  right: 4cqb;  
+  box-sizing: border-box;
+  padding: 6px;
+  margin: 8px 0px;
+  text-decoration: none;
+  color: black;
+  font-size: 15px;
+  background-color: var(--primary-color);
+  font-weight: 700;
+  border: 0;
+  height: 40px;
+  width: 100px;
+  border-radius: 15px;
+  transition: linear 0.5s;
+}
+
+.a-back-1:hover{
+  background-color: green;
+  color: var(--font-body);
+}
+
+.title-form{
+  box-sizing: border-box;
+  margin: 4px;
+  padding: 4px;
+}
+
+/*Card de editar*/
+.card-form{
+  position: relative; 
+  box-sizing: border-box;
+  padding: 10px;
+  background-color: var(--primary-color);
+  display: grid;
+  width: 600px;
+  height: 200px;
+  border-radius: 15px;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  grid-template-rows: 1fr ;
+  align-items: center;
+  text-align: start;
+  margin-top: 10px;
+}
+.img-form{
+  width: 150px;
+  height: 150px;
+  border-radius: 15px;
+  object-fit: cover;
+  position: relative;
+  z-index: 1; 
+  margin-left: 5px;
+}
+
+.input-1{
+  margin: 20px;
+  height: 50px;
+  width: 300px;
+  border: 0;
+  background-color: var(--primary-color);
+  color: var(--font-body);
+  font-size: 40px;
+  text-align: left;
+}
+
+.input-2{
+  margin: 20px;
+  height: 50px;
+  width: 300px;
+  border: 0;
+  background-color: var(--primary-color);
+  color: var(--font-body);
+  font-size: 20px;
+  text-align: start;
+}
+
+/* FOOTER */
+.footer{
+  background-color: #AFC2CC;
+  position: relative;
+  height: 50px;
+
+}
+
+.footer p{
+  margin: 0;
+  padding: 10px;
+  text-align: center;
+  color: var(--font-body);
+  font: 10px;
+}

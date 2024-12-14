@@ -23,6 +23,6 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('Forms/', include('Forms.urls')),
-    path('/', RedirectView.as_view(url='/Forms/', permanent=True)),
+    path('', RedirectView.as_view(url='/Forms/', permanent=True)),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

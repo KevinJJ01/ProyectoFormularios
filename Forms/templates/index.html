@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formularios</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'Forms/css/styles.css' %}">
+</head>
+
+<body>
+    {% block sidebar %}
+    <nav class="nav">
+      <h1>FORMULARIOS DEV</h1>
+    </nav>
+    {% endblock %}
+
+
+    <main class="main-content">
+
+        <section class="cards">
+            {% for formulario in formularios %}
+                <div class="card">
+                    <div class="img-cont">
+                        <img class="img" src="{% static 'Forms/img/form.png' %}" alt="Imagen de Formulario">
+                        <a class="icon" href="{% url 'editarForm' formulario.id %}"><i class="fa-solid fa-pencil"></i></a>
+                    </div>
+
+                    <div class="text">
+                        <p class="t-1">{{ formulario.Nombre }}</p>
+                        <p class="t-2">{{ formulario.Descripcion }}</p>
+                    </div>
+
+                    <div>
+                        <i class="fa-solid fa-ellipsis-vertical icon-options" title="Opciones" onclick="toggleMenu()"></i>
+                        <ul id="optionsMenu" class="options-menu">
+                            <a class="links" href="{% url 'editarForm' formulario.id %}"><li>Editar</li></a>
+                            <a class="links" href="{% url 'eliminarForm' formulario.id %}"><li>Eliminar</li></a>
+                        </ul>                        
+                    </div>
+                </div>
+            {% empty %}
+                <h3>No hay formularios disponibles.</h3>
+            {% endfor %}
+        </section>
+
+
+        <a class="icon-add" href="{% url 'crearForm'%}" title="Crear Formulario"><i class="fa-solid fa-plus"></i></a>
+
+    </main>
+
+    <footer class="footer">
+        <p>FOOTER</p>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/c628e42b8b.js" crossorigin="anonymous"></script>
+    <script src="{% static 'Forms/js/index.js' %}"></script>
+
+</body>
+
+</html>
