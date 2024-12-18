@@ -23,7 +23,7 @@
     <main class="main-content-form">
         <aside class="content-info-form">
 
-            <div class="card-info-form">
+             <div class="card-info-form">
                 <form class="form-inf" action="{% url 'crearInfoForm1' formulario.id %}" method="POST">
                     {% csrf_token %}
                     <label class="title-form-inf" >Seleccion Unica</label>
@@ -69,7 +69,7 @@
                     <input class="input-text option" type="text" id="opciones" name="opciones" placeholder="Texto">
                     <button class="button-1" type="submit">Agregar Componente</button>
                 </form>
-            </div>
+            </div> 
 
             <script src="{% static 'Forms/js/form.js' %}"></script>
 
@@ -101,39 +101,47 @@
 
 
         <div class="content-form">
-            <div>
-                <form>
+            {% for infoForm in infoForms %}
+        
+                {% if infoForm.tipo == 'checkbox' %}
+
+                <div>
+                    <form>
+                        <p class="title-option-form">{{ infoForm.titulo }}</p>
+                        <label>
+                            <input class="options-form" type="checkbox" name="opcion" value=""> {{ infoForm.opciones }}
+                        </label><br>
+                    </form>
+                </div>
+
+                {% elif infoForm.tipo == 'select' %}
+
+                <div>
                     <p class="title-option-form">{{ infoForm.titulo }}</p>
-                    <label>
-                        <input class="options-form" type="checkbox" name="opcion1" value="opcion1"> {{ infoForm.opciones }}
-                    </label><br>
-                </form>
-            </div>
+                    <select class="options-form">
+                        <option class="options-form" value="{{ infoForm.opciones }}">{{ infoForm.opciones }}</option>
+                    </select>
+                </div>
 
-            <!-- <div>
-                <p class="title-option-form"></p>
-                <select class="options-form">
-                    <option class="options-form" value="opcion1">Opción 1</option>
-                    <option class="options-form" value="opcion2">Opción 2</option>
-                    <option class="options-form" value="opcion3">Opción 3</option>
-                </select>
-            </div>
+        
+                {% elif infoForm.tipo == 'text' %}
 
-
-
-            <div>
-                <p class="title-option-form">Titulo pregunta</p>
-                <form>
-                    <input class="options-form" type="text" id="campoTexto" name="campoTexto"
-                        placeholder="Escribe tu respuesta aqui!">
-                </form>
-            </div> -->
-
+                <div>
+                    <p class="title-option-form">{{ infoForm.titulo }}</p>
+                    <form>
+                        <input class="options-form" type="text" id="campoTexto" name="campoTexto" placeholder="Escribe tu respuesta aquí!">
+                    </form>
+                </div>
+        
+                {% endif %}
+        
+            {% endfor %}
         </div>
-
+        
         <div>
-            <a href="{% url 'consultarForm'%}"><button class="a-back">Atras</button></a>
+            <a href="{% url 'consultarForm' %}"><button class="a-back">Atras</button></a>
         </div>
+        
 
     </section>
 

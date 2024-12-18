@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Formulario, InfoForm
+import Forms
 
 
 
@@ -38,16 +39,18 @@ def editarForm(request, id):
         Nombre = request.POST.get('Nombre')
         Descripcion = request.POST.get('Descripcion')
 
-        # Actualizar el objeto con los nuevos datos
         formulario.Nombre = Nombre
         formulario.Descripcion=Descripcion
-        formulario.save()  # Guardar los cambios en la base de datos
+        formulario.save()  
 
-        # Redirigir a la vista consultarForm después de guardar
-        return redirect('consultarForm')  # Ajusta el nombre de la vista de consulta según lo que tengas
 
-    # Si la solicitud es GET, cargar los datos actuales del formulario en el formulario HTML
-    return render(request, 'formEditForm.html', {'formulario': formulario})
+        return redirect('consultarForm')  
+    
+    
+    infoForms = InfoForm.objects.filter(idFormulario=formulario)
+    print(infoForms)
+
+    return render(request, 'formEditForm.html', {'formulario': formulario, 'infoForms': infoForms})
 
 
 
@@ -106,6 +109,3 @@ def crearInfoForm2(request, id):
 
     return redirect('editarForm', id=formularioId.id)
 
-def consultarInfoForm(request, id):
-    infoForm = Formulario.objects.get(id=id)  # Obtener todos los formularios
-    return render(request, 'formEditForm.html', {'infoForm': infoForm})  # Pasar los formularios a la plantilla

@@ -9,5 +9,4 @@ urlpatterns = [
     path('eliminarForm/<int:id>/', views.eliminarForm, name='eliminarForm'), #Ruta para eliminar formulario
     path('crearInfoForm1/<int:id>/', views.crearInfoForm1, name='crearInfoForm1'), 
     path('crearInfoForm2/<int:id>/', views.crearInfoForm2, name='crearInfoForm2'), 
-    path('c', views.consultarInfoForm, name='c') 
 ]

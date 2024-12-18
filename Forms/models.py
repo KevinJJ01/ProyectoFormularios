@@ -13,7 +13,7 @@ class InfoForm(models.Model):
     tipo = models.CharField(max_length=20)  
     titulo = models.CharField(max_length=30)  
     opciones = models.TextField(blank=True)
-    idFormulario = models.ForeignKey(Formulario, on_delete=models.CASCADE) 
+    idFormulario = models.ForeignKey(Formulario, on_delete=models.CASCADE, related_name='infoForm') 
 
     def get_opciones(self):
         # Convertir la cadena de texto a una lista
