@@ -29,22 +29,38 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// Función para agregar una nueva opción al contenedor de opciones
-function agregarOpcion(formType) {
-  let containerId =
-    formType === 1 ? "options-container-1" : "options-container-2";
-  let container = document.getElementById(containerId);
 
-  // Crear un nuevo elemento de opción (input)
-  let newOptionDiv = document.createElement("div");
-  if (formType === 1) {
-    newOptionDiv.innerHTML =
-      '<input class="checkbox" type="checkbox"><input class="option" type="text" placeholder="Titulo opcion">';
-  } else {
-    newOptionDiv.innerHTML =
-      '<li><input class="option" type="text" placeholder="Titulo opcion"></li>';
-  }
 
-  // Agregar el nuevo elemento al contenedor
-  container.appendChild(newOptionDiv);
+
+//FUNCION PARA MODAL EMERGENTE
+// Obtener el modal
+var modal = document.getElementById("myModal");
+
+// Obtener el botón que abre el modal
+var btn = document.getElementById("openModalBtn");
+
+// Obtener el elemento <span> que cierra el modal
+var span = document.getElementsByClassName("close")[0];
+
+// Cuando el usuario hace clic en el botón, abrir el modal
+btn.onclick = function () {
+    modal.style.display = "block";
 }
+
+// Cuando el usuario hace clic en <span> (x), cerrar el modal
+span.onclick = function () {
+    modal.style.display = "none";
+}
+
+// Cuando el usuario hace clic fuera del modal, también cerrarlo
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+
+
+
+
+
