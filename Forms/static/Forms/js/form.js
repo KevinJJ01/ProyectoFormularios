@@ -27,21 +27,21 @@ addButton.addEventListener("click", () => {
 // Función para agregar las opciones al formulario oculto para enviarlas en el POST
 document.querySelector('form').addEventListener('submit', function (event) {
   const select = document.getElementById("dynamicSelect");
-  const opciones = [];
+  const opciones = "";
 
-  // Recolectar todas las opciones del select, excepto la opción por defecto
-  for (let i = 1; i < select.options.length; i++) {
+  // Recolectar todas las opciones del select
+  for (let i = 0; i < select.options.length; i++) {
     opciones.push(select.options[i].value); // Obtener el valor de cada opción
   }
 
-  // Crear un campo oculto para enviar las opciones en el formulario
-  const inputOpciones = document.createElement('input');
-  inputOpciones.type = 'hidden';
-  inputOpciones.name = 'newOption'; // El nombre debe coincidir con el nombre del campo en el backend
-  inputOpciones.value = opciones.join(","); // Unir las opciones con coma para enviarlas como una cadena
-
-  // Añadir el campo oculto al formulario antes de enviarlo
-  this.appendChild(inputOpciones);
+  // Añadir cada opción como un campo oculto independiente
+  opciones.forEach(opcion => {
+    const input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = 'opciones'; // Mantén el mismo nombre que en el backend
+    input.value = opciones;
+    this.appendChild(input);
+  });
 });
 
 // Función para agregar una nueva opción al contenedor de opciones (si se usa para checkbox, por ejemplo)
@@ -54,7 +54,7 @@ function agregarOpcion(formType) {
   let newOptionDiv = document.createElement("div");
   if (formType === 1) {
     newOptionDiv.innerHTML =
-      '<div><input class="checkbox" type="checkbox"><input class="option" type="text" id="opciones" name="opciones" placeholder="Titulo opcion"></div></div>';
+      '<div><input class="checkbox" type="checkbox"><input class="option" type="text" id="opciones" name="opciones" placeholder="Titulo opcion" required></div></div>';
   } else {
     console.log("Error al crear nuevo input");
   }

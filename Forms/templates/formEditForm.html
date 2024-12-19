@@ -23,37 +23,38 @@
     <main class="main-content-form">
         <aside class="content-info-form">
 
-             <div class="card-info-form">
+            <div class="card-info-form">
                 <form class="form-inf" action="{% url 'crearInfoForm1' formulario.id %}" method="POST">
                     {% csrf_token %}
-                    <label class="title-form-inf" >Seleccion Unica</label>
-                    <input type="hidden"  id="tipo" name="tipo" value="checkbox">
+                    <label class="title-form-inf">Seleccion Unica</label>
+                    <input type="hidden" id="tipo" name="tipo" value="checkbox">
                     <input class="title-option" type="text" id="titulo" name="titulo" placeholder="Titulo de pregunta">
                     <div id="options-container-1">
                         <div>
-                            <input class="checkbox" type="checkbox"><input class="option" type="text" id="opciones" name="opciones" placeholder="Titulo opcion"></div>
+                            <input class="checkbox" type="checkbox"><input class="option" type="text" id="opciones" name="opciones" placeholder="Titulo opcion" required>
                         </div>
+                    </div>
                     <button type="button" class="button" onclick="agregarOpcion(1)">Agregar Opcion</button>
                     <button class="button-1" type="submit">Agregar Componente</button>
                 </form>
             </div>
 
             <div class="card-info-form">
-                <form class="form-inf" action="{% url 'crearInfoForm2' formulario.id %}" method="POST">
+                <form class="form-inf" action="{% url 'crearInfoForm1' formulario.id %}" method="POST">
                     {% csrf_token %}
                     <label class="title-form-inf">Lista Desplegable</label>
-                    <input type="hidden"  id="tipo" name="tipo" value="select">
-                    <input class="title-option" type="text" id="titulo" name="titulo" placeholder="Titulo de pregunta">
-
+                    <input type="hidden" id="tipo" name="tipo" value="select">
+                    <input class="title-option" type="text" id="titulo" name="titulo" placeholder="Titulo de pregunta" required>
                     <div>
                         <select class="option" id="dynamicSelect">
-                            <option id="opciones" name="opciones" value="Selecciona una opcion">Selecciona una opción</option>
+                            <option id="opciones" name="opciones" value="Selecciona una opcion">Selecciona una opción
+                            </option>
                         </select>
                     </div>
                     <div class="list-design">
                         <input class="option" type="text" id="newOption" placeholder="Escribe nueva opción">
                     </div>
-                    
+
                     <button class="button" type="button" id="addOption">Agregar opción</button>
                     <button class="button-1" type="submit">Agregar Componente</button>
                 </form>
@@ -63,13 +64,12 @@
                 <form class="form-inf" action="{% url 'crearInfoForm1' formulario.id %}" method="POST">
                     {% csrf_token %}
                     <label class="title-form-inf">Campo de Texto</label>
-                    <input type="hidden"  id="tipo" name="tipo" value="text">
-                    <input class="title-option" type="text" id="titulo" name="titulo"
-                        placeholder="Titulo de pregunta">
-                    <input class="input-text option" type="text" id="opciones" name="opciones" placeholder="Texto">
+                    <input type="hidden" id="tipo" name="tipo" value="text">
+                    <input class="title-option" type="text" id="titulo" name="titulo" placeholder="Titulo de pregunta" required>
+                    <input class="input-text" type="text" id="opciones" name="opciones" placeholder="Texto" required>
                     <button class="button-1" type="submit">Agregar Componente</button>
                 </form>
-            </div> 
+            </div>
 
             <script src="{% static 'Forms/js/form.js' %}"></script>
 
@@ -80,11 +80,10 @@
 
                 <img class="img-form" src="{% static 'Forms/img/form.png' %}" alt="imagen de formulario">
 
-                <form method="POST">
+                <form method="POST" >
                     {% csrf_token %}
-
-                    <input class="input-1" type="text" id="Nombre" name="Nombre" value="{{ formulario.Nombre }}"
-                        required>
+                    <input type="hidden" name="updateFormulario" value="true">
+                    <input class="input-1" type="text" id="Nombre" name="Nombre" value="{{ formulario.Nombre }}" required>
                     <br>
 
                     <input class="input-2" type="Descripcion" id="Descripcion" name="Descripcion"
@@ -95,68 +94,77 @@
 
 
             <button class="a-back-1" type="submit">Guardar</button>
-
-            <button class="a-back-1" type="submit">Guardar</button>
-        </form>
+            </form>
 
 
-        <div class="content-form">
-            {% for infoForm in infoForms %}
-        
+            <div class="content-form">
+                {% for infoForm in infoForms %}
+
+
                 {% if infoForm.tipo == 'checkbox' %}
-
-                <div>
-                    <form>
-                        <p class="title-option-form">{{ infoForm.titulo }}</p>
-                        <label>
-                            <input class="options-form" type="checkbox" name="opcion" value=""> {{ infoForm.opciones }}
-                        </label><br>
+                <div class="container-infoForm">
+                    <form method="POST" class="infoForm-checkbox">
+                        {% csrf_token %}
+                        <input type="hidden" name="updateInfoForm" value="true">
+                        <a class="icon-checkbox" href="{% url 'eliminarInfoForm' infoForm.id %}"><i class="fa-regular fa-circle-xmark" title="Eliminar Componente"></i></a>
+                        <input type="hidden" name="infoForm_id" value="{{ infoForm.id }}">
+                        <input class="title-infoForm" type="text" name="titulo" value="{{ infoForm.titulo }}" required>
+                        <div id="opciones-container">
+                            {% for opcion in infoForm.opciones %}
+                            <div><input class="checkbox" type="checkbox"><input class="option-2" type="text" id="opciones" name="opciones" value="{{ opcion }}" required></div>
+                            {% endfor %}
+                        </div>
+                        <button class="button-save" type="submit"><i class="fas fa-save" title="Guardar Cambios"></i></button>
                     </form>
                 </div>
+
+
 
                 {% elif infoForm.tipo == 'select' %}
-
-                <div>
-                    <p class="title-option-form">{{ infoForm.titulo }}</p>
-                    <select class="options-form">
-                        <option class="options-form" value="{{ infoForm.opciones }}">{{ infoForm.opciones }}</option>
+                <div class="container-infoForm infoForm-checkbox">
+                    <input type="hidden" name="updateInfoForm" value="true">
+                    <a class="icon-checkbox" href="{% url 'eliminarInfoForm' infoForm.id %}"><i class="fa-regular fa-circle-xmark" title="Eliminar Componente"></i></a>
+                    <input type="hidden" name="infoForm_id" value="{{ infoForm.id }}">
+                    <input class="title-infoForm" type="text" name="titulo" value="{{ infoForm.titulo }}" required>
+                    <select class="options-form-infCheck">
+                    {% for opcion in infoForm.opciones %}
+                        <option class="option-2" value="{{ opcion }}">{{ opcion }}</option>
+                    {% endfor %}
                     </select>
+                    <button class="button-save" type="submit"><i class="fas fa-save" title="Guardar Cambios" ></i></button>
                 </div>
 
-        
                 {% elif infoForm.tipo == 'text' %}
-
-                <div>
-                    <p class="title-option-form">{{ infoForm.titulo }}</p>
-                    <form>
-                        <input class="options-form" type="text" id="campoTexto" name="campoTexto" placeholder="Escribe tu respuesta aquí!">
+                <div class="container-infoForm">
+                    <form method="POST" class="infoForm-checkbox">
+                        {% csrf_token %}
+                        <input type="hidden" name="updateInfoForm" value="true">
+                        <a class="icon-checkbox" href="{% url 'eliminarInfoForm' infoForm.id %}"><i class="fa-regular fa-circle-xmark" title="Eliminar Componente"></i></a>
+                        <input type="hidden" name="infoForm_id" value="{{ infoForm.id }}">
+                        <input class="title-infoForm" type="text" name="titulo" value="{{ infoForm.titulo }}" required>
+                        {% for opcion in infoForm.opciones %}
+                        <input class="option-form-text" type="text" id="campoTexto" name="campoTexto" placeholder="Ingresa tu texto aqui" value="{{opcion}}" required>
+                        {% endfor %}
+                        <button class="button-save" type="submit"><i class="fas fa-save" title="Guardar Cambios"></i></button>
                     </form>
                 </div>
-        
-                {% endif %}
-        
-            {% endfor %}
-        </div>
-        
-        <div>
-            <a href="{% url 'consultarForm' %}"><button class="a-back">Atras</button></a>
-        </div>
-        
 
-    </section>
+                {% endif %}
+
+            {% endfor %}
+            </div>
+
+            <div>
+                <a href="{% url 'consultarForm' %}"><button class="a-back">Atras</button></a>
+            </div>
+
+        </section>
 
     </main>
 
-
-
-    <footer class="footer">
-
-    </footer>
+    <footer class="footer"></footer>
 
     <script src="https://kit.fontawesome.com/c628e42b8b.js" crossorigin="anonymous"></script>
 
-
-
 </body>
-
 </html>

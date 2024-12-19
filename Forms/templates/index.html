@@ -59,7 +59,7 @@
           <div id="myModal" class="modal" {% if show_modal %} class="modal show" {% else %} class="modal" {% endif %}>
               <div class="modal-content">
                   <span class="close" onclick="closeModal()">&times;</span>
-                  <div class="card-form">
+                  <div class="card-form-modal">
                       <img class="img-form" src="{% static 'Forms/img/form.png' %}" alt="imagen de formulario">
                       <form method="POST" action="{% url 'crearForm' %}">
                           {% csrf_token %}
@@ -67,9 +67,9 @@
                           <br>
                           <input class="input-2" type="text" id="Descripcion" name="Descripcion" placeholder="Descripcion" required>
                           <br>
-                          <button class="button-1" type="submit">Guardar</button>
-                      </form>
                   </div>
+                  <div class="container-button-index"><button class="button-index" type="submit">Crear Formulario</button></div>
+                </form>
               </div>
           </div>
 
