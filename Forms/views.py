@@ -137,7 +137,7 @@ def crearInfoForm2(request, id):
     return redirect('editarForm', id=formularioId.id)
 
 #Metodo para eliminar la informacion del formulario
-def eliminarInfoForm(request, id ):
+def eliminarInfoForm(request, id):
     print(f"Metodo para eliminar informacion del formulario Inicializado " )
     # Obtener el objeto a eliminar, si no existe, devolver 404
     objeto = get_object_or_404(InfoForm, id=id)

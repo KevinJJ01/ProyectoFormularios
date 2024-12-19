@@ -29,10 +29,10 @@
                     {% csrf_token %}
                     <label class="title-form-inf">Seleccion Unica</label>
                     <input type="hidden" id="tipo" name="tipo" value="checkbox">
-                    <input class="title-option" type="text" id="titulo" name="titulo" placeholder="Titulo de pregunta">
+                    <input class="title-option" type="text" id="titulo" name="titulo" placeholder="Titulo de pregunta" required>
                     <div id="options-container-1">
                         <div>
-                            <input class="checkbox" type="checkbox"><input class="option" type="text" id="opciones" name="opciones" placeholder="Titulo opcion" required>
+                            <input class="checkbox" type="checkbox"><input class="option" type="text" id="opciones" name="opciones" placeholder="Titulo opcion" >
                         </div>
                     </div>
                     <button type="button" class="button" onclick="agregarOpcion(1)">Agregar Opcion</button>
