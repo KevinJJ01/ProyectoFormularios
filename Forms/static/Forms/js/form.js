@@ -26,25 +26,42 @@ addButton.addEventListener("click", () => {
 
 // Función para agregar las opciones al formulario oculto para enviarlas en el POST
 document.querySelector('form').addEventListener('submit', function (event) {
+  console.log("Formulario enviado, procesando opciones...");
   const select = document.getElementById("dynamicSelect");
-  const opciones = "";
+  const opciones = [];
 
-  // Recolectar todas las opciones del select
+  // Recolectar todas las opciones del select (sin incluir la opción "Selecciona una opción")
   for (let i = 0; i < select.options.length; i++) {
-    opciones.push(select.options[i].value); // Obtener el valor de cada opción
+    const option = select.options[i];
+    if (option.value && option.value !== "Selecciona una opcion") {
+      opciones.push(option.value); // Obtener el valor de cada opción
+    }
   }
 
-  // Añadir cada opción como un campo oculto independiente
+  console.log("Opciones recolectadas:", opciones);  // Verifica qué opciones estamos obteniendo del form
+
+  if (opciones.length === 0) {
+    alert("Por favor, agrega al menos una opción.");
+    event.preventDefault();  // Detener el envío si no hay opciones
+    return;
+  }
+
+  // Añadir cada opción como un campo oculto
   opciones.forEach(opcion => {
-    const input = document.createElement('input');
-    input.type = 'hidden';
-    input.name = 'opciones'; // Mantén el mismo nombre que en el backend
-    input.value = opciones;
-    this.appendChild(input);
+    const input = document.createElement("input");
+    input.type = "hidden";
+    input.name = "opciones";  // Nombre de los campos ocultos
+    input.value = opcion;
+    this.appendChild(input);  // Añadir el campo oculto al formulario
   });
+
+  console.log("Campos ocultos añadidos:", opciones);  //revisar en consola si las opciones si se agregaron 
+
 });
 
-// Función para agregar una nueva opción al contenedor de opciones (si se usa para checkbox, por ejemplo)
+
+
+// Función para agregar una nueva opción al contenedor de opciones (para inputs de tipo checkbox)
 function agregarOpcion(formType) {
   let containerId =
     formType === 1 ? "options-container-1" : "options-container-2";
@@ -54,7 +71,7 @@ function agregarOpcion(formType) {
   let newOptionDiv = document.createElement("div");
   if (formType === 1) {
     newOptionDiv.innerHTML =
-      '<div><input class="checkbox" type="checkbox"><input class="option" type="text" id="opciones" name="opciones" placeholder="Titulo opcion" required></div></div>';
+      '<div><input class="checkbox" type="checkbox" name="opciones"><input class="option" type="text" placeholder="Titulo opción" required></div>';
   } else {
     console.log("Error al crear nuevo input");
   }

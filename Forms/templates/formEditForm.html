@@ -21,6 +21,7 @@
 
 
     <main class="main-content-form">
+        <!-- CONTENEDOR DE COMPONENTES "INFO-FORM" -->
         <aside class="content-info-form">
 
             <div class="card-info-form">
@@ -40,7 +41,7 @@
             </div>
 
             <div class="card-info-form">
-                <form class="form-inf" action="{% url 'crearInfoForm1' formulario.id %}" method="POST">
+                <form class="form-inf" action="{% url 'crearInfoForm2' formulario.id %}" method="POST">
                     {% csrf_token %}
                     <label class="title-form-inf">Lista Desplegable</label>
                     <input type="hidden" id="tipo" name="tipo" value="select">
@@ -71,13 +72,11 @@
                 </form>
             </div>
 
-            <script src="{% static 'Forms/js/form.js' %}"></script>
-
         </aside>
 
         <section class="formulario-style">
             <div class="card-form">
-
+                <!-- CONTENEDOR DE TARJETA FORMULARIO  -->
                 <img class="img-form" src="{% static 'Forms/img/form.png' %}" alt="imagen de formulario">
 
                 <form method="POST" >
@@ -98,9 +97,8 @@
 
 
             <div class="content-form">
+                <!-- CONTENEDOR DE INFO FORM "COMPONENTE" -->
                 {% for infoForm in infoForms %}
-
-
                 {% if infoForm.tipo == 'checkbox' %}
                 <div class="container-infoForm">
                     <form method="POST" class="infoForm-checkbox">
@@ -160,11 +158,16 @@
 
         </section>
 
+        
+
     </main>
 
-    <footer class="footer"></footer>
+    <footer class="footer">
+        <p>Kevin Muñoz</p>
+    </footer>
 
     <script src="https://kit.fontawesome.com/c628e42b8b.js" crossorigin="anonymous"></script>
+    <script src="{% static 'Forms/js/form.js' %}"></script>
 
 </body>
 </html>

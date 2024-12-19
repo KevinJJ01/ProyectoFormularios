@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    <!-- BARRA DE NAVEGACION -->
     {% block sidebar %}
     <nav class="nav">
         <h1 class="title-nav">FORMULARIOS DEV</h1>
@@ -18,7 +19,7 @@
 
 
     <main class="main-content">
-
+        <!-- SECCION DE CONTENIDO "CARDS FORMULARIOS" -->
         <section class="cards">
             {% for formulario in formularios %}
             <div class="card">
@@ -51,6 +52,7 @@
         </section>
 
 
+        <!-- MODAL PARA REGISTRO DEL FORMULARIO  -->
         <a id="openModalBtn" href="javascript:void(0)" class="icon-add" title="Crear Formulario" onclick="openModal()">
             <i class="fa-solid fa-plus"></i>
           </a>
@@ -75,8 +77,9 @@
 
     </main>
 
-    <footer class="footer">
 
+    <footer class="footer">
+        <p>Kevin Muñoz</p>
     </footer>
 
     <script src="https://kit.fontawesome.com/c628e42b8b.js" crossorigin="anonymous"></script>

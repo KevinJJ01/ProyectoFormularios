@@ -1,3 +1,4 @@
+/* FUNCION PARA MENU INICIAL DE  TARJETS INDEX */
 document.addEventListener("DOMContentLoaded", function () {
   // Selecciona todos los iconos y menús de opciones
   var iconOptionsList = document.querySelectorAll(".icon-options");
@@ -14,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
         optionsMenu.style.display === "block" ? "none" : "block";
     });
   });
-
+  
   // Cerrar el menú si se hace clic fuera de él
   document.addEventListener("click", function (event) {
     iconOptionsList.forEach(function (iconOptions, index) {

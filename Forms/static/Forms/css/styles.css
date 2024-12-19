@@ -19,7 +19,8 @@ body {
   grid-template-rows: 80px 1fr 50px;
   min-height: 100vh;
   justify-items: end;
-  overflow: hidden; /* Elimina el scroll */
+  overflow: hidden;
+  /* Elimina el scroll */
 }
 
 
@@ -99,7 +100,7 @@ body {
   margin-top: 10px;
 }
 
-.container-button-index{
+.container-button-index {
   width: 600px;
   height: 60px;
   display: grid;
@@ -109,7 +110,7 @@ body {
   align-items: center;
 }
 
-.button-index{
+.button-index {
   height: 40px;
   width: auto;
   text-align: center;
@@ -194,7 +195,7 @@ body {
   font-size: 22px;
   font-weight: 600;
   color: var(--font-body);
-  
+
 }
 
 div .list-des {
@@ -221,8 +222,9 @@ div .list-des {
   border: 0.2px solid rgba(31, 47, 61, 0.42);
   color: var(--font-body);
 }
-.title-option::placeholder { 
-  color: white; 
+
+.title-option::placeholder {
+  color: white;
 }
 
 
@@ -241,8 +243,8 @@ div .list-des {
   height: 28px;
 }
 
-.option::placeholder { 
-  color: white; 
+.option::placeholder {
+  color: white;
 }
 
 .checkbox {
@@ -280,7 +282,7 @@ div .list-des {
   transition: linear 0.5s;
 }
 
-.button:hover{
+.button:hover {
   background-color: var(--background-color);
   border: 0.6px solid rgba(13, 255, 0, 0.422);
 }
@@ -299,7 +301,7 @@ div .list-des {
   transition: linear 0.5s;
 }
 
-.button-1:hover{
+.button-1:hover {
   background-color: var(--background-color);
   border: 0.6px solid rgba(13, 255, 0, 0.422);
 }
@@ -317,11 +319,11 @@ div .list-des {
   border: 0.5px solid rgba(31, 47, 61, 0.422);
 }
 
-.input-text:focus{
+.input-text:focus {
   outline: none;
 }
 
-.input-text::placeholder{
+.input-text::placeholder {
   color: var(--font-body);
 }
 
@@ -339,17 +341,40 @@ div .list-des {
   width: 50%;
   max-height: 900px;
   overflow-x: auto;
-  --scrollbar-width: 10px; --scrollbar-height: 0px; --scrollbar-border-radius: 0px; --scrollbar-thumb-color: var(--primary-color); --scrollbar-border-thickness: 0px; 
+  --scrollbar-width: 10px;
+  --scrollbar-height: 0px;
+  --scrollbar-border-radius: 0px;
+  --scrollbar-thumb-color: var(--primary-color);
+  --scrollbar-border-thickness: 0px;
 }
-.formulario-style::-webkit-scrollbar { width: var(--scrollbar-width, 20px); height: var(--scrollbar-height, 20px); 
+
+.formulario-style::-webkit-scrollbar {
+  width: var(--scrollbar-width, 20px);
+  height: var(--scrollbar-height, 20px);
 }
-.formulario-style::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb-color, #3B82F6); border: var(--scrollbar-border-thickness, 3px) solid var(--scrollbar-border-color, rgb(255, 255, 255)); border-radius: var(--scrollbar-border-radius, 4px); 
+
+.formulario-style::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb-color, #3B82F6);
+  border: var(--scrollbar-border-thickness, 3px) solid var(--scrollbar-border-color, rgb(255, 255, 255));
+  border-radius: var(--scrollbar-border-radius, 4px);
 }
-.formulario-style::-webkit-scrollbar-track { background: var(--scrollbar-track-color, #a1a1aa00); 
+
+.formulario-style::-webkit-scrollbar-track {
+  background: var(--scrollbar-track-color, #a1a1aa00);
 }
-.formulario-style::-webkit-scrollbar-corner { background: var(--scrollbar-corner-color, #FFFFFF); border: var(--scrollbar-border-thickness, 3px) solid var(--scrollbar-border-color, rgb(255, 255, 255)); border-radius: var(--scrollbar-border-radius, 4px); 
+
+.formulario-style::-webkit-scrollbar-corner {
+  background: var(--scrollbar-corner-color, #FFFFFF);
+  border: var(--scrollbar-border-thickness, 3px) solid var(--scrollbar-border-color, rgb(255, 255, 255));
+  border-radius: var(--scrollbar-border-radius, 4px);
 }
-.formulario-style::-webkit-scrollbar-button:vertical:start:increment, #preview::-webkit-scrollbar-button:vertical:end:decrement, #preview::-webkit-scrollbar-button:horizontal:start:increment, #preview::-webkit-scrollbar-button:horizontal:end:decrement { display: var(--show-double-buttons, none); }
+
+.formulario-style::-webkit-scrollbar-button:vertical:start:increment,
+#preview::-webkit-scrollbar-button:vertical:end:decrement,
+#preview::-webkit-scrollbar-button:horizontal:start:increment,
+#preview::-webkit-scrollbar-button:horizontal:end:decrement {
+  display: var(--show-double-buttons, none);
+}
 
 
 
@@ -660,7 +685,7 @@ div .list-des {
 }
 
 /*Diseño opciones de info form*/
-.contatiner-infoForm{
+.contatiner-infoForm {
   height: 100%;
   width: 100%;
   padding: 10px;
@@ -670,24 +695,24 @@ div .list-des {
   justify-items: center;
 }
 
-.form-infoForm{
+.form-infoForm {
   justify-items: center;
   padding: 10px;
 }
 
 /*Style componente de checkbox*/
-.infoForm-checkbox{
+.infoForm-checkbox {
   margin: 10px;
   padding: 8px;
   display: grid;
-  grid-template-columns: 500px ;
+  grid-template-columns: 500px;
   grid-template-rows: 30px 40px 1fr 30px;
   gap: 10px;
   border: 1px solid #1d272f96;
   border-radius: 10px;
 }
 
-.icon-checkbox{
+.icon-checkbox {
   color: var(--font-body);
   align-items: end;
   display: grid;
@@ -696,7 +721,7 @@ div .list-des {
   text-decoration: none;
 }
 
-.title-infoForm{
+.title-infoForm {
   height: 30px;
   width: 80%;
   font-size: 26px;
@@ -704,11 +729,12 @@ div .list-des {
   background-color: var(--primary-color);
   border: none;
 }
-.title-infoForm:focus{
+
+.title-infoForm:focus {
   outline: none;
 }
 
-.options-form-infCheck{
+.options-form-infCheck {
   height: 30px;
   width: 60%;
   color: var(--font-body);
@@ -717,7 +743,7 @@ div .list-des {
   font-size: 20px;
 }
 
-.button-save{
+.button-save {
   background-color: var(--primary-color);
   border: none;
   color: var(--font-body);
@@ -742,15 +768,15 @@ div .list-des {
   font-size: 18px;
 }
 
-.option-2::placeholder { 
-  color: white; 
+.option-2::placeholder {
+  color: white;
 }
 
-.option-2:focus{
+.option-2:focus {
   outline: none;
 }
 
-.option-form-text{
+.option-form-text {
   background-color: var(--primary-color);
   width: 70%;
   height: 100px;
