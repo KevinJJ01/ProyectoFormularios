@@ -41,7 +41,7 @@
             </div>
 
             <div class="card-info-form">
-                <form class="form-inf" action="{% url 'crearInfoForm2' formulario.id %}" method="POST">
+                <form class="form-inf" action="{% url 'crearInfoForm1' formulario.id %}" method="POST">
                     {% csrf_token %}
                     <label class="title-form-inf">Lista Desplegable</label>
                     <input type="hidden" id="tipo" name="tipo" value="select">
@@ -52,11 +52,12 @@
                             </option>
                         </select>
                     </div>
-                    <div class="list-design">
-                        <input class="option" type="text" id="newOption" placeholder="Escribe nueva opción">
+                    <div class="list-design" id="options-container-2">
+                        <div>
+                            <input class="option" type="text" name="opciones" id="opciones"  placeholder="Escribe nueva opción">
+                        </div>
                     </div>
-
-                    <button class="button" type="button" id="addOption">Agregar opción</button>
+                    <button type="button" class="button" onclick="agregarOpcion(2)">Agregar opción</button>
                     <button class="button-1" type="submit">Agregar Componente</button>
                 </form>
             </div>
@@ -131,6 +132,8 @@
                     </select>
                     <button class="button-save" type="submit"><i class="fas fa-save" title="Guardar Cambios" ></i></button>
                 </div>
+                
+                
 
                 {% elif infoForm.tipo == 'text' %}
                 <div class="container-infoForm">
@@ -168,6 +171,7 @@
 
     <script src="https://kit.fontawesome.com/c628e42b8b.js" crossorigin="anonymous"></script>
     <script src="{% static 'Forms/js/form.js' %}"></script>
+    
 
 </body>
 </html>
